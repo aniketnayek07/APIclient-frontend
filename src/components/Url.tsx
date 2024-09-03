@@ -23,7 +23,7 @@ function Url() {
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="outline">
-              {position.toUpperCase()}{" "}
+              {position.toUpperCase()}
               <CaretDownIcon className="ml-1 text-2xl" />
             </Button>
           </DropdownMenuTrigger>
