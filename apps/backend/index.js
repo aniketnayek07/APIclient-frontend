@@ -14,28 +14,26 @@ app.post("/recreq", async (req, res) => {
     Object.assign(reqObj, { ["url"]: req.body.url });
     Object.assign(reqObj, { ["method"]: req.body.method });
     Object.assign(reqObj, { ["body"]: req.body.body });
-    Object.assign(reqObj, { ["headers"]: req.body.header });
-    console.log(reqObj.body);
-    console.log(reqObj.method);
+    Object.assign(reqObj, { ["headers"]: req.body.headers });
+    console.log(reqObj);
+    console.log(reqObj.method.toUpperCase());
     let response = { data: "Hello World" };
 
-    if (reqObj.method === "GET") {
-      response = await axios.get(reqObj.url, reqObj.body, {
-        headers: reqObj.headers,
-      });
-    } else if (reqObj.method === "POST") {
+    if (reqObj.method.toUpperCase() === "GET") {
+      response = await axios.get(reqObj.url, reqObj.body);
+    } else if (reqObj.method.toUpperCase() === "POST") {
       response = await axios.post(reqObj.url, reqObj.body, {
         headers: reqObj.headers,
       });
-    } else if (reqObj.method === "PUT") {
+    } else if (reqObj.method.toUpperCase() === "PUT") {
       response = await axios.put(reqObj.url, reqObj.body, {
         headers: reqObj.headers,
       });
-    } else if (reqObj.method === "DELETE") {
+    } else if (reqObj.method.toUpperCase() === "DELETE") {
       response = await axios.delete(reqObj.url, reqObj.body, {
         headers: reqObj.headers,
       });
-    } else if (reqObj.method === "PATCH") {
+    } else if (reqObj.method.toUpperCase() === "PATCH") {
       response = await axios.patch(reqObj.url, reqObj.body, {
         headers: reqObj.headers,
       });
